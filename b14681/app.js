@@ -28,5 +28,6 @@ function solution(x, y) {
   if (x > 0 && y < 0) {
     ans = 4;
   }
+
   console.log(ans);
 }
