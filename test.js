@@ -1,32 +1,13 @@
-const readline = require('readline');
+const fs = require('fs');
+let input = fs.readFileSync('/dev/stdin').toString().split('\n');
 
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-});
+let total = +input[0];
+let cnt = +input[1];
+let sum = 0;
 
-let input = [];
-rl.on('line', function (line) {
-  input.push(line);
-}).on('close', function () {
-  input = input.map((item) => +item);
-  solution(input[0], input[1]);
-  process.exit();
-});
-
-function solution(x, y) {
-  let ans = 0;
-  if (x > 0 && y > 0) {
-    ans = 1;
-  }
-  if (x < 0 && y > 0) {
-    ans = 2;
-  }
-  if (x < 0 && y < 0) {
-    ans = 3;
-  }
-  if (x > 0 && y < 0) {
-    ans = 4;
-  }
-  console.log(ans);
+for (let i = 2; i <= cnt + 1; ++i) {
+  let newArr = input[i].split(' ').map((item) => Number(item));
+  sum += newArr[0] * newArr[1];
 }
+
+console.log(total === sum ? 'Yes' : 'No');
